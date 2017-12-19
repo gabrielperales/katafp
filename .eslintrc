@@ -1,0 +1,6 @@
+{
+  "parser": "babel-eslint",
+  "plugins": ["fp", "babel"],
+  "env": { "jest": true, "es6": true },
+  "extends": "plugin:fp/recommended"
+}

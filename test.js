@@ -1,38 +1,41 @@
-import projectsForCompany from "./";
+/* eslint-disable fp/no-unused-expression */
+/* eslint-disable fp/no-nil */
+
+import projectsForCompany from './'
 
 const allProjects = [
   {
-    name: "CentralLog",
+    name: 'CentralLog',
     year: 2014,
-    company: "GMV",
+    company: 'GMV'
   },
   {
-    name: "Mdirector",
+    name: 'Mdirector',
     year: 2015,
-    company: "Antevenio",
+    company: 'Antevenio'
   },
   {
-    name: "MSD Calendar",
+    name: 'MSD Calendar',
     year: 2016,
-    company: "IMS",
+    company: 'IMS'
   },
   {
-    name: "Movistar TV",
+    name: 'Movistar TV',
     year: 2018,
-    company: "Movistar",
+    company: 'Movistar'
   },
   {
-    name: "Oneweb",
+    name: 'Oneweb',
     year: 2019,
-    company: "GMV",
-  },
-];
+    company: 'GMV'
+  }
+]
 
-const company = "GMV";
+const company = 'GMV'
 
-describe("projects for company", () => {
-  it("returns the exact number of projects for a given client", () => {
-    const projects = projectsForCompany(allProjects, company);
-    expect(projects.length).toBe(2);
-  });
-});
+describe('projects for company', () => {
+  it('returns the exact number of projects for a given client', () => {
+    const projects = projectsForCompany(allProjects, company)
+    expect(projects.length).toBe(2)
+  })
+})

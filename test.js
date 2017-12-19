@@ -1,34 +1,38 @@
-import projectsForYear from "./";
+import projectsForCompany from "./";
 
-const projects = [
+const allProjects = [
   {
     name: "CentralLog",
     year: 2014,
+    company: "GMV",
   },
   {
     name: "Mdirector",
     year: 2015,
+    company: "Antevenio",
   },
   {
     name: "MSD Calendar",
     year: 2016,
+    company: "IMS",
   },
   {
     name: "Movistar TV",
     year: 2018,
+    company: "Movistar",
   },
   {
     name: "Oneweb",
     year: 2019,
+    company: "GMV",
   },
 ];
 
-const year = 2015;
+const company = "GMV";
 
-describe("projects for year", () => {
-  it("returns the exact number of projects finished one a given year", () => {
-    const projectsOnYear = projectsForYear(projects, year);
-    expect(projectsOnYear.length).toBe(1);
-    expect(projectsOnYear[0]).toMatch(/Mdirector/);
+describe("projects for company", () => {
+  it("returns the exact number of projects for a given client", () => {
+    const projects = projectsForCompany(allProjects, company);
+    expect(projects.length).toBe(2);
   });
 });

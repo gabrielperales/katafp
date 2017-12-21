@@ -4,8 +4,8 @@
 // 2. Combining functions
 
 export default function projectsForCompany(projects, company) {
-  const filtered = projects.filter(project => project.company === company);
-  return filtered.map(project => project.name);
+  const filtered = projects.filter(project => project.company === company)
+  return filtered.map(project => project.name)
 }
 
 // replace map filter

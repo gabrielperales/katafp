@@ -1,28 +1,30 @@
 // replace map, filter
 // collection-iteration functions
-export function projectsForCompanyCollIter(projects, company) {
-  const filtered = projects.filter(project => project.company === company)
-  return filtered.map(project => project.name)
-}
-
 // compose/pipe
-export function projectsForCompanyComposePipe(projects, company) {
+//prop, propEq
+export function projectsForCompany(company, projects) {
   const filtered = projects.filter(project => project.company === company)
   return filtered.map(project => project.name)
 }
 
 // complement
-export function isProjectFinishedComplement(projects, projectName) {
+export function isProjectFinished(projectName, projects) {
   return projects.find(p => p.name === projectName).status === 'finished'
 }
 
-export function isProjectUnfinishedComplement(projects, projectName) {
+export function isProjectUnfinished(projectName, projects) {
   return projects.find(p => p.name === projectName).status !== 'finished'
 }
 
-// replace map filter
-// compose/pipe
+// both
 // partial application/curry
-// imperative vs functional. all operator replacements
+// imperative vs functional gte, subtract, when, always
 // point free programming
+export const everlastingProjects = (year, projects) => {
+  const filtered = projects.filter(
+    project => year - project.year >= 2 && project.status === 'ongoing'
+  )
+  return filtered.map(project => project.name)
+}
+
 // lenses

@@ -1,11 +1,17 @@
 /* eslint-disable fp/no-unused-expression */
 /* eslint-disable fp/no-nil */
 
-// import { projectsForCompanyCollIter } from './exercises'
+// import {
+//   projectsForCompany,
+//   isProjectFinished,
+//   isProjectUnfinished,
+//   everlastingProjects
+// } from './exercises'
 import {
   projectsForCompany,
   isProjectFinished,
-  isProjectUnfinished
+  isProjectUnfinished,
+  everlastingProjects
 } from './solutions'
 
 const allProjects = [
@@ -42,10 +48,11 @@ const allProjects = [
 ]
 
 const company = 'GMV'
+const currentYear = 2018
 
 describe('projects for company', () => {
   it('returns the exact list of projects for a given client company', () => {
-    const projects = projectsForCompany(allProjects, company)
+    const projects = projectsForCompany(company, allProjects)
     expect(projects.length).toBe(2)
     expect(projects).toContain('CentralLog')
     expect(projects).toContain('Oneweb')
@@ -53,7 +60,7 @@ describe('projects for company', () => {
 })
 describe('isProjectFinished', () => {
   it('returns true for a project with status = finished', () => {
-    const finished = isProjectFinished(allProjects, 'Oneweb')
+    const finished = isProjectFinished('Oneweb', allProjects)
 
     expect(finished).toBe(false)
   })
@@ -61,8 +68,23 @@ describe('isProjectFinished', () => {
 
 describe('isProjectUnfinished', () => {
   it('returns true for a project with status != finished ', () => {
-    const finished = isProjectUnfinished(allProjects, 'Oneweb')
+    const finished = isProjectUnfinished('Oneweb', allProjects)
 
     expect(finished).toBe(true)
+  })
+})
+
+describe('everlastingProjects', () => {
+  it('returns the list of not finished projects that started 2 years ago at least', () => {
+    const projects = everlastingProjects(currentYear, allProjects)
+
+    expect(projects.length).toBe(1)
+    expect(projects).toContain('MSD Calendar')
+  })
+
+  it('returns a message if no projects matching', () => {
+    const result = everlastingProjects(2013, allProjects)
+
+    expect(result).toEqual('No results found!')
   })
 })

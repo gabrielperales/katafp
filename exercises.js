@@ -20,10 +20,11 @@ export function isProjectUnfinished(projectName, projects) {
 // partial application/curry
 // imperative vs functional gte, subtract, when, always
 // point free programming
-export const everlastingProjects = (year, projects) => {
+export const getEverlasting = (year, projects) => {
   const filtered = projects.filter(
     project => year - project.year >= 2 && project.status === 'ongoing'
   )
+  if (filtered.length === 0) return 'No results found!'
   return filtered.map(project => project.name)
 }
 

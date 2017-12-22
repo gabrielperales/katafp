@@ -1,18 +1,12 @@
 /* eslint-disable fp/no-unused-expression */
 /* eslint-disable fp/no-nil */
 
-// import {
-// projectsForCompany,
-// isProjectFinished,
-// isProjectUnfinished,
-// getEverlasting
-// } from './exercises'
 import {
   projectsForCompany,
   isProjectFinished,
   isProjectUnfinished,
   getEverlasting
-} from './solutions'
+} from './exercises'
 
 const allProjects = [
   {

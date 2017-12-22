@@ -2,16 +2,16 @@
 /* eslint-disable fp/no-nil */
 
 // import {
-//   projectsForCompany,
-//   isProjectFinished,
-//   isProjectUnfinished,
-//   everlastingProjects
+// projectsForCompany,
+// isProjectFinished,
+// isProjectUnfinished,
+// getEverlasting
 // } from './exercises'
 import {
   projectsForCompany,
   isProjectFinished,
   isProjectUnfinished,
-  everlastingProjects
+  getEverlasting
 } from './solutions'
 
 const allProjects = [
@@ -76,14 +76,14 @@ describe('isProjectUnfinished', () => {
 
 describe('everlastingProjects', () => {
   it('returns the list of not finished projects that started 2 years ago at least', () => {
-    const projects = everlastingProjects(currentYear, allProjects)
+    const projects = getEverlasting(currentYear, allProjects)
 
     expect(projects.length).toBe(1)
     expect(projects).toContain('MSD Calendar')
   })
 
   it('returns a message if no projects matching', () => {
-    const result = everlastingProjects(2013, allProjects)
+    const result = getEverlasting(2013, allProjects)
 
     expect(result).toEqual('No results found!')
   })

@@ -8,6 +8,7 @@ import {
   propEq,
   prop,
   gte,
+  lt,
   subtract,
   curry,
   both,
@@ -42,25 +43,18 @@ export const isProjectUnfinished = complement(isProjectFinished)
 // partial application/curry
 // imperative vs functional. all operator replacements
 const isOngoing = complement(isFinished)
-
-const getYear = prop('year')
-const getDuration = (currentYear, project) =>
-  subtract(currentYear, getYear(project))
-
-const lastsMoreThanTwo = curry((currentYear, project) =>
-  gte(getDuration(currentYear, project), 2)
-)
-
-const everlastingProject = currentYear =>
-  both(isOngoing, lastsMoreThanTwo(currentYear))
-
-const everlastingProjectsSearch = currentYear =>
-  compose(getAllProjectNames, filter(everlastingProject(currentYear)))
-
 const errorWhenEmpty = when(isEmpty, always('No results found!'))
 
-export const everlastingProjects = (currentYear, projects) =>
-  compose(errorWhenEmpty, everlastingProjectsSearch(currentYear))(projects)
+const everlasting = currentYear =>
+  both(isOngoing, pipe(prop('year'), gte(currentYear - 2)))
+
+export const getEverlasting = (currentYear, list) => {
+  return compose(
+    errorWhenEmpty,
+    map(prop('name')),
+    filter(everlasting(currentYear))
+  )(list)
+}
 
 // point free programming
 // lenses
